@@ -1,11 +1,7 @@
 <template>
-    <div class="nav-wrapper">
-        <div class="content">
-            Money.vue
-        </div>
-
-        <Nav/>
-    </div>
+    <Layout>
+        我是Money.vue
+    </Layout>
 
 </template>
 
@@ -16,15 +12,5 @@
 </script>
 
 <style lang="scss" scoped>
-    .nav-wrapper{
-        border:1px solid black;
-        display:flex;
-        flex-direction: column;
-        height:100vh;
-    }
-    .content{
-        border:1px solid green;
-        flex-grow:1;
-        overflow:auto;
-    }
+
 </style>
