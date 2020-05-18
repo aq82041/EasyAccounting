@@ -22,7 +22,7 @@
         height:100vh;
     }
     .content{
-        border:1px solid green;
+
         flex-grow:1;
         overflow:auto;
     }
