@@ -20,4 +20,7 @@
         fill: currentColor;
         overflow: hidden;
     }
+    path{
+        fill: none;
+    }
 </style>
