@@ -2,7 +2,7 @@
     <div>
         <label class="notes">
             <span class="name">备注：</span>
-            <input type="text" placeholder="在这里输入备注"
+            <input type="text" placeholder="点我写备注~"
             v-model="value" >
         </label>
     </div>
@@ -27,7 +27,7 @@
         display:flex;
         align-items: center;
         > .name{
-            padding-right:16px;
+            padding-right:14px;
         }
         > input{
             height:54px;

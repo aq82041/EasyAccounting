@@ -2,12 +2,12 @@
     <Layout class-prefix="layout">
         <NumPad/>
         <Notes/>
-        <Tags/>
+        <Tags :data-source.sync="tags"/>
         <Type/>
     </Layout>
 </template>
 
-<script lang="ts">
+<script lang="js">
     import NumPad from '@/components/MoneyComponents/NumPad.vue';
     import Notes from '@/components/MoneyComponents/Notes.vue';
     import Tags from '@/components/MoneyComponents/Tags.vue';
@@ -15,6 +15,11 @@
     export default {
         name: 'Money',
         components: {Type, Notes,Tags, NumPad},
+        data(){
+            return {
+                tags:['服饰','餐饮','住房','交通','化妆品']
+            }
+        }
     };
 </script>
 

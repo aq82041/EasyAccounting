@@ -1,24 +1,44 @@
 <template>
     <div class="tags">
         <div class="new">
-            <button>新增标签</button>
+            <button @click="create">新增标签</button>
         </div>
         <ul class="current">
-            <li>服饰</li>
-            <li>餐饮</li>
-            <li>住房</li>
-            <li>交通</li>
-            <li>服饰</li>
-            <li>服饰</li>
-            <li>服饰</li>
+            <li v-for="tag in dataSource" :key="tag"
+            @click="toggle(tag)"
+                :class="{selected:selectedTags.indexOf(tag)>=0}">{{tag}}</li>
         </ul>
     </div>
 </template>
 
 <script lang="ts">
-    export default {
-        name: 'Tags'
-    };
+    import Vue from 'vue';
+    import {Component, Prop} from 'vue-property-decorator';
+
+    @Component
+   export default class Tags extends Vue{
+       @Prop(Array) dataSource: string[] | undefined
+        selectedTags: string[]=[]
+        toggle(tag: string){
+           const index=this.selectedTags.indexOf(tag)
+           if(index>=0){
+               this.selectedTags.splice(index,1)
+           }else{
+               this.selectedTags.push(tag)
+           }
+        }
+        create(){
+           const name=window.prompt('请输入标签名')
+            if(name===''){
+                window.alert('标签名不能为空')
+            }else{
+                if(this.dataSource){
+                    this.$emit('update:dataSource',[...this.dataSource,name])
+                }
+            }
+        }
+
+   }
 </script>
 
 <style lang="scss" scoped>
@@ -34,16 +54,20 @@
             flex-wrap: wrap;
 
             > li{
-                background:#F9B3CB;
-                color:white;
+                background:#E8E8E8;
+                color:#484848;
                 height:24px;
                 border-radius:12px;
                 padding:0 12px;
-                margin-right:8px;
+                margin-right:10px;
                 display:flex;
                 align-items: center;
                 justify-content: center;
                 margin-top:6px;
+                &.selected{
+                    background:#F9B3CB;
+                    color:white;
+                }
             }
         }
         > .new{
