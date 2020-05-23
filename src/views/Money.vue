@@ -1,6 +1,6 @@
 <template>
     <Layout class-prefix="layout">
-        <NumPad @update:value="onUpdateAmount"/>
+        <NumPad @update:value="onUpdateAmount" @submit="saveRecord"/>
         <Notes @update:value="onUpdateNotes"/>
         <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
         <Type :type.sync="record.type"/>{{this.record}}
@@ -13,13 +13,14 @@
     import Notes from '@/components/MoneyComponents/Notes.vue';
     import Tags from '@/components/MoneyComponents/Tags.vue';
     import Type from '@/components/MoneyComponents/Type.vue';
-    import {Component} from 'vue-property-decorator';
+    import {Component, Watch} from 'vue-property-decorator';
 
     type Record={
         tags: string[];
         notes: string;
         type: string;
         amount: number;
+        date?: Date;
     }
     @Component({
         components: {Type, Notes,Tags, NumPad},
@@ -32,6 +33,7 @@
             type:'-',
             amount:0
         }
+        recordList: Record[]=JSON.parse(localStorage.getItem("recordList") || '[]')
         onUpdateTags(tags: string[]){
             this.record.tags=tags
         }
@@ -40,6 +42,15 @@
         }
         onUpdateAmount(amount: string){
             this.record.amount=parseFloat(amount)
+        }
+        saveRecord(){
+            const record2=JSON.parse(JSON.stringify(this.record))
+            record2.date=new Date()
+            this.recordList.push(record2)
+        }
+        @Watch('recordList')
+        onRecordListChanged(){
+            localStorage.setItem("recordList",JSON.stringify(this.recordList))
         }
 
     }
