@@ -1,7 +1,10 @@
 <template>
     <Layout class-prefix="layout">
         <NumPad @update:value="onUpdateAmount" @submit="saveRecord"/>
-        <Notes @update:value="onUpdateNotes" field-name="备注：" placeholder="点我写备注~"/>
+        <div class="notes">
+            <FormItem @update:value="onUpdateNotes" field-name="备注：" placeholder="点我写备注~"/>
+        </div>
+
         <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
         <Type :type.sync="record.type"/>
     </Layout>
@@ -10,7 +13,7 @@
 <script lang="ts">
     import Vue from 'vue';
     import NumPad from '@/components/MoneyComponents/NumPad.vue';
-    import Notes from '@/components/MoneyComponents/Notes.vue';
+    import FormItem from '@/components/MoneyComponents/FormItem.vue';
     import Tags from '@/components/MoneyComponents/Tags.vue';
     import Type from '@/components/MoneyComponents/Type.vue';
     import {Component, Watch} from 'vue-property-decorator';
@@ -18,11 +21,12 @@
     import recordListModel from '@/models/recordListModel';
     import tagListModel from '@/models/tagListModel';
 
+
     const recordList=recordListModel.fetch()
     const tagList=tagListModel.fetch()
 
     @Component({
-        components: {Type, Notes,Tags, NumPad},
+        components: {FormItem, Type, Tags, NumPad},
     })
     export default class Money extends Vue{
         tags=tagList
@@ -60,5 +64,8 @@
         display:flex;
         flex-direction: column-reverse;
         justify-content: space-between;
+    }
+    .notes{
+        padding:3px 0;
     }
 </style>
