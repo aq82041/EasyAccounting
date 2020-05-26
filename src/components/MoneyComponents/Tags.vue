@@ -6,7 +6,7 @@
         <ul class="current">
             <li v-for="tag in dataSource" :key="tag"
             @click="toggle(tag)"
-                :class="{selected:selectedTags.indexOf(tag)>=0}">{{tag}}</li>
+                :class="{selected:selectedTags.indexOf(tag)>=0}">{{tag.name}}</li>
         </ul>
     </div>
 </template>
@@ -34,7 +34,7 @@
                 window.alert('标签名不能为空')
             }else{
                 if(this.dataSource){
-                    this.$emit('update:dataSource',[...this.dataSource,name])
+                    this.$emit('update:dataSource',[...this.dataSource,{id:name,name:name}])
                 }
             }
         }
