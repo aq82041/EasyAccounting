@@ -1,6 +1,6 @@
 const localStorageKey="recordList"
 
-const model={
+const recordListModel={
     fetch(){
         return JSON.parse(localStorage.getItem(localStorageKey) || '[]') as RecordItem[]
     },
@@ -12,4 +12,4 @@ const model={
     }
 }
 
-export default model
+export default recordListModel

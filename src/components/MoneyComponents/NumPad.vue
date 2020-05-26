@@ -65,6 +65,7 @@
     @import "~@/assets/style/helper.scss";
 
     .num-pad {
+        background:white;
         > .output {
             font-size: 36px;
             font-family: Consolas, monospace;
@@ -73,6 +74,7 @@
             color: #F9B3CB;
             @extend %innerShadow;
             height: 66px;
+
         }
 
         > .buttons {
@@ -82,12 +84,12 @@
                 float: left;
                 width: 25%;
                 height: 58px;
-                background: white;
+
                 border: none;
                 border-top: 1px solid black;
                 border-right: 1px solid black;
                 font-size: 20px;
-
+                background:white;
                 &.ok {
                     height: 116px;
                     float: right;

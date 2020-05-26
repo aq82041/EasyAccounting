@@ -50,6 +50,7 @@
         display:flex;
         flex-direction: column-reverse;
         overflow: auto;
+        background:white;
         > .current{
             display:flex;
             flex-wrap: wrap;
