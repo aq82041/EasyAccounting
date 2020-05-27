@@ -9,7 +9,7 @@
             <FormItem :value="tag.name" @update:value="UpdateTag" field-name="标签名" placeholder="请输入标签名"/>
         </div>
         <div class="button-wrapper">
-            <Button text="删除标签"/>
+            <Button @click="remove" text="删除标签"/>
         </div>
 
     </Layout>
@@ -41,6 +41,11 @@
         UpdateTag(newName: string){
             if(this.tag){
                 tagListModel.update(this.tag.id,newName)
+            }
+        }
+        remove(){
+            if(this.tag){
+                tagListModel.remove(this.tag.id)
             }
         }
     }
