@@ -31,7 +31,7 @@
         padding:0 16px;
         display:flex;
         align-items: center;
-        justify-content: center;
+
         > .name{
             padding-right:14px;
         }
@@ -40,6 +40,7 @@
             flex-grow:1;
             background:transparent;
             border:none;
+            font-size:14px;
         }
     }
 </style>

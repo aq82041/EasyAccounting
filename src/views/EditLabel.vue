@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <div class="navBar">
-            <Icon class="leftIcon" name="left"/>
+            <Icon class="leftIcon" name="left" @click="goBack"/>
             <span class="title">编辑标签</span>
             <span class="rightIcon"></span>
         </div>
@@ -46,7 +46,12 @@
         remove(){
             if(this.tag){
                 tagListModel.remove(this.tag.id)
+                window.alert('删除成功')
+                this.$router.back()
             }
+        }
+        goBack(){
+            this.$router.back()
         }
     }
 </script>
