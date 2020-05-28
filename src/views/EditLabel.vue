@@ -19,6 +19,7 @@
     import {Component} from 'vue-property-decorator';
     import FormItem from '@/components/MoneyComponents/FormItem.vue';
     import Button from '@/components/Button.vue';
+    import store from '@/store/index2';
     @Component({
         components: {Button, FormItem}
     })
@@ -26,20 +27,20 @@
         tag?: Tag=undefined
         created(){
             const id=this.$route.params.id
-            if(window.findTag(id)){
-                this.tag=window.findTag(id)
+            if(store.findTag(id)){
+                this.tag=store.findTag(id)
             }else{
                 this.$router.replace('/404')
             }
         }
         UpdateTag(newName: string){
             if(this.tag){
-                window.updateTag(this.tag.id,newName)
+                store.updateTag(this.tag.id,newName)
             }
         }
         remove(){
             if(this.tag){
-                window.removeTag(this.tag.id)
+                store.removeTag(this.tag.id)
                 window.alert('删除成功')
                 this.$router.back()
             }
