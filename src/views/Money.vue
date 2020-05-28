@@ -18,12 +18,6 @@
     import Type from '@/components/MoneyComponents/Type.vue';
     import {Component} from 'vue-property-decorator';
 
-    import recordListModel from '@/models/recordListModel';
-    import tagListModel from '@/models/tagListModel';
-
-
-    const recordList=recordListModel.fetch()
-
     @Component({
         components: {FormItem, Type, Tags, NumPad},
     })
@@ -35,7 +29,7 @@
             type:'-',
             amount:0
         }
-        recordList: RecordItem[]=recordList
+        recordList=window.recordList
         onUpdateTags(tags: string[]){
             this.record.tags=tags
         }
@@ -46,13 +40,8 @@
             this.record.amount=parseFloat(amount)
         }
         saveRecord(){
-            recordListModel.create(this.record)
+            window.createRecord(this.record)
         }
-        //@Watch('recordList')
-        //onRecordListChanged(){
-          //  recordListModel.save()
-        //}
-
     }
 </script>
 

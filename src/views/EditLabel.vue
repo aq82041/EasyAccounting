@@ -11,9 +11,7 @@
         <div class="button-wrapper">
             <Button @click="remove" text="删除标签"/>
         </div>
-
     </Layout>
-
 </template>
 
 <script lang="ts">
