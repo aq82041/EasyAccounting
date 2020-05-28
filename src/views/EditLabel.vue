@@ -19,33 +19,29 @@
 <script lang="ts">
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
-    import tagListModel from '@/models/tagListModel';
     import FormItem from '@/components/MoneyComponents/FormItem.vue';
     import Button from '@/components/Button.vue';
     @Component({
         components: {Button, FormItem}
     })
     export default class EditLabel extends Vue {
-        tag?: {id: string;name: string}=undefined
+        tag?: Tag=undefined
         created(){
             const id=this.$route.params.id
-            tagListModel.fetch()
-            const tags=tagListModel.data
-            const tag=tags.filter(tag=>tag.id===id)[0]
-            if(tag){
-                this.tag=tag
+            if(window.findTag(id)){
+                this.tag=window.findTag(id)
             }else{
                 this.$router.replace('/404')
             }
         }
         UpdateTag(newName: string){
             if(this.tag){
-                tagListModel.update(this.tag.id,newName)
+                window.updateTag(this.tag.id,newName)
             }
         }
         remove(){
             if(this.tag){
-                tagListModel.remove(this.tag.id)
+                window.removeTag(this.tag.id)
                 window.alert('删除成功')
                 this.$router.back()
             }
