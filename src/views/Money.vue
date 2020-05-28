@@ -53,7 +53,7 @@
         }
         @Watch('recordList')
         onRecordListChanged(){
-            recordListModel.save(this.recordList)
+            recordListModel.save()
         }
 
     }
