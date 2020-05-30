@@ -3,7 +3,7 @@
         <label class="notes">
             <span class="name">{{fieldName}}</span>
             <input type="text" :placeholder="placeholder"
-            :value="value" @input="onValueChanged($event.target.value)" >
+            :value="value" @change="onValueChanged($event.target.value)" >
         </label>
     </div>
 </template>
