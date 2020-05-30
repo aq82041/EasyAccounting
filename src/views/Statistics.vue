@@ -7,12 +7,11 @@
 
 <script lang="ts">
     import Vue from 'vue'
-    import Type from '@/components/MoneyComponents/Type.vue';
     import {Component} from 'vue-property-decorator';
     import Tabs from '@/components/Tabs.vue';
 
     @Component({
-        components: {Tabs, Type},
+        components: {Tabs},
     })
     export default class Statistics extends Vue{
         type='-'
@@ -32,6 +31,8 @@
 
 <style lang="scss" scoped>
     ::v-deep .interval-tab{
+        padding:8px 0;
+        font-size:20px;
         background:white;
         color:black;
         &.selected{

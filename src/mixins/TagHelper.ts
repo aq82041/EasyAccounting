@@ -3,7 +3,7 @@ import Component from 'vue-class-component'
 
 // You can declare mixins as the same style as components.
 @Component
-export class tagHelper extends Vue {
+export class TagHelper extends Vue {
     createTag(){
         const name=window.prompt("请输入标签名")
         if(!name){

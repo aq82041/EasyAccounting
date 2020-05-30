@@ -13,7 +13,7 @@
 
 <script lang="ts">
     import {Component} from 'vue-property-decorator';
-    import {tagHelper} from '@/mixins/tagHelper';
+    import {TagHelper} from '@/mixins/TagHelper';
     import {mixins} from 'vue-class-component';
 
     @Component({
@@ -23,7 +23,7 @@
             }
         }
     })
-   export default class Tags extends mixins(tagHelper){
+   export default class Tags extends mixins(TagHelper){
         beforeCreate(){
             this.$store.commit('fetchTags')
         }

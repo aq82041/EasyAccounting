@@ -7,9 +7,9 @@ import router from '@/router';
 Vue.use(Vuex)
 
 type myState={
-  recordList: RecordItem[],
-  tagList:Tag[],
-  currentTag?: Tag
+  recordList: RecordItem[];
+  tagList: Tag[];
+  currentTag?: Tag;
 }
 
 const store= new Vuex.Store({
@@ -70,7 +70,7 @@ const store= new Vuex.Store({
       store.commit('fetchTags')
       state.currentTag= state.tagList.filter(tag => tag.id === id)[0];
     },
-    updateTag (state,payload:{id: string, newName: string}) {
+    updateTag (state,payload: {id: string; newName: string}) {
       const {id,newName}=payload
       const idList=state.tagList.map(item=>item.id)
       if(idList.indexOf(id)>=0){

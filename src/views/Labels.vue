@@ -18,7 +18,7 @@
 <script lang="ts">
     import {Component} from 'vue-property-decorator';
     import Button from '@/components/Button.vue';
-    import {tagHelper} from '@/mixins/tagHelper';
+    import {TagHelper} from '@/mixins/TagHelper';
     import {mixins} from 'vue-class-component';
 
     @Component({
@@ -29,7 +29,7 @@
             }
         }
     })
-    export default class Labels extends mixins(tagHelper) {
+    export default class Labels extends mixins(TagHelper) {
         beforeCreate(){
             this.$store.commit('fetchTags')
         }

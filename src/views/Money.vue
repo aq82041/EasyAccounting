@@ -6,8 +6,7 @@
         </div>
 
         <Tags @update:value="onUpdateTags"/>
-        <Type :type.sync="record.type"/>
-        <Tabs/>
+        <Tabs :data-source="typeList" :value.sync="record.type"/>
     </Layout>
 </template>
 
@@ -16,12 +15,11 @@
     import NumPad from '@/components/MoneyComponents/NumPad.vue';
     import FormItem from '@/components/MoneyComponents/FormItem.vue';
     import Tags from '@/components/MoneyComponents/Tags.vue';
-    import Type from '@/components/MoneyComponents/Type.vue';
     import {Component} from 'vue-property-decorator';
     import Tabs from '@/components/Tabs.vue';
 
     @Component({
-        components: {Tabs, FormItem, Type, Tags, NumPad},
+        components: {Tabs, FormItem, Tags, NumPad},
     })
     export default class Money extends Vue{
         get recordList(){
@@ -33,6 +31,10 @@
             type:'-',
             amount:0
         }
+        typeList=[
+            {text:'支出',value:'-'},
+            {text:'收入',value:'+'}
+        ]
         created(){
             this.$store.commit('fetchRecords')
         }
