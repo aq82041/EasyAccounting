@@ -1,11 +1,11 @@
 <template>
-    <ul class="tabs">
-        <li v-for="data in dataSource" :key="data.value"
-        @click="select(data)" class="tabs-item"
-            :class="{selected:value===data.value,[classPrefix+'-tab']:classPrefix}">
-            {{data.text}}
-        </li>
-    </ul>
+        <ul class="tabs">
+            <li v-for="data in dataSource" :key="data.value"
+            @click="select(data)" class="tabs-item"
+                :class="{selected:value===data.value,[classPrefix+'-tab']:classPrefix}">
+                {{data.text}}
+            </li>
+        </ul>
 </template>
 
 <script lang="ts">
@@ -24,29 +24,27 @@
 </script>
 
 <style lang="scss" scoped>
-    .tabs {
+    .tabs{
         background: #F9B3CB;
-        color: white;
+        color:white;
+        padding:16px 80px;
+        font-size:20px;
         display: flex;
-        text-align: center;
-        font-size: 24px;
-
-        &-item {
-            width: 50%;
-            padding: 12px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            &.selected::after {
-                content: '';
-                position: absolute;
-                background: #F66093;
-                width: 100%;
-                bottom: 0;
-                left: 0;
-                height: 4px;
-            }
+        > .tabs-item{
+                padding:0 10px;
+                width:50%;
+                text-align: center;
+                border:2px solid white;
+                border-radius:18px;
+                &.selected{
+                    background:white;
+                    color:#F9B3CB;
+                    &::after{
+                        display:none;
+                    }
+                }
         }
+
+
     }
 </style>

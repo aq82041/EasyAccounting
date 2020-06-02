@@ -2,7 +2,7 @@
     <Layout class-prefix="layout">
         <NumPad @update:value="onUpdateAmount" @submit="saveRecord"/>
         <div class="notes">
-            <FormItem @update:value="onUpdateNotes" field-name="备注：" placeholder="点我写备注~"/>
+            <FormItem :value.sync="record.notes" field-name="备注：" placeholder="点我写备注~"/>
         </div>
 
         <Tags @update:value="onUpdateTags"/>
@@ -17,6 +17,7 @@
     import Tags from '@/components/MoneyComponents/Tags.vue';
     import {Component} from 'vue-property-decorator';
     import Tabs from '@/components/Tabs.vue';
+    import typeList from '@/constant/typeList';
 
     @Component({
         components: {Tabs, FormItem, Tags, NumPad},
@@ -31,24 +32,21 @@
             type:'-',
             amount:0
         }
-        typeList=[
-            {text:'支出',value:'-'},
-            {text:'收入',value:'+'}
-        ]
+        typeList=typeList
         created(){
             this.$store.commit('fetchRecords')
         }
         onUpdateTags(tags: string[]){
             this.record.tags=tags
         }
-        onUpdateNotes(notes: string){
-            this.record.notes=notes
-        }
+
         onUpdateAmount(amount: string){
             this.record.amount=parseFloat(amount)
         }
         saveRecord(){
             this.$store.commit('createRecord',this.record)
+            window.alert('保存成功')
+            this.record.notes=''
         }
     }
 </script>

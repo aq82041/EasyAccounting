@@ -3,10 +3,15 @@ type RecordItem={
     notes: string;
     type: string;
     amount: number;
-    date?: Date;
+    date?: string;
 }
 
 type Tag={
     id: string;
     name: string;
+}
+type myState={
+    recordList: RecordItem[];
+    tagList: Tag[];
+    currentTag?: Tag;
 }
