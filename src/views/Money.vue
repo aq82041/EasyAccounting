@@ -44,6 +44,11 @@
             this.record.amount=parseFloat(amount)
         }
         saveRecord(){
+            if(this.record.tags.length===0){
+                window.alert('请选中或自行添加一个标签')
+                this.record.notes=''
+                return
+            }
             this.$store.commit('createRecord',this.record)
             window.alert('保存成功')
             this.record.notes=''

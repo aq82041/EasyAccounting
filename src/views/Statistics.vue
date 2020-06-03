@@ -11,7 +11,7 @@
                    <li v-for="(item,index) in value.items" :key="index" class="record">
                        <span>{{item.tags[0] || '无'}}</span>
                        <span class="note">{{item.notes}}</span>
-                       <span>￥{{item.amount}}</span>
+                       <span class="amount">{{type}}{{item.amount}}</span>
                    </li>
                </ul>
            </li>
@@ -86,28 +86,19 @@
                 return day.format('YYYY年M月D日')
             }
         }
+
     }
 </script>
 
 <style lang="scss" scoped>
-    //::v-deep .type-tab{
-    //    background:white;
-    //    color:black;
-     //   &.selected{
-    //        background: #F9B3CB;
-     //       color: white;
-     //       &::after{
-    //            display:none;
-     //       }
-    //    }
-
-   // }
 
     .title{
         padding:4px 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        font-size:16px;
+        color:#999;
     }
     .record{
         background: white;
@@ -116,6 +107,9 @@
         align-content: center;
         line-height:36px;
         padding:8px 16px;
+        > .amount{
+
+        }
     }
     .note{
         margin-right: auto;
