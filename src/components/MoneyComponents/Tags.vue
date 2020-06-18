@@ -50,6 +50,7 @@
         flex-direction: column-reverse;
         overflow: auto;
         background:white;
+
         > .current{
             display:flex;
             flex-wrap: wrap;
@@ -59,7 +60,7 @@
                 color:#484848;
                 height:24px;
                 border-radius:12px;
-                padding:0 12px;
+                padding:0 10px;
                 margin-right:10px;
                 display:flex;
                 align-items: center;

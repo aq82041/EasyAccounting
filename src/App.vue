@@ -1,15 +1,9 @@
 <template>
-  <div>
+  <div id="app">
     <router-view/>
   </div>
 </template>
 
-<script lang="js">
-
-  export default{
-
-  }
-</script>
 
 <style lang="scss">
   @import "~@/assets/style/reset.scss";
@@ -22,6 +16,11 @@
    color: #333;
    font-size:16px;
    background:#f5f5f5;
+
  }
+  #app{
+    max-width:500px;
+    margin:0 auto;
+  }
 
 </style>

@@ -32,8 +32,6 @@
     import dayjs from 'dayjs';
     import clone from '@/lib/clone';
 
-
-
     @Component({
         components: {Tabs},
     })

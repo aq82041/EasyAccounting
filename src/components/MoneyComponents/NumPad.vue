@@ -74,12 +74,10 @@
             color: #F9B3CB;
             @extend %innerShadow;
             height: 66px;
-
         }
 
         > .buttons {
             @extend %clearFix;
-
             > button {
                 float: left;
                 width: 25%;
