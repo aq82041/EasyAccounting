@@ -50,17 +50,17 @@
             if(recordList.length===0){return  []}
             const newList=clone(recordList)
                 .filter(r=>r.type===this.type)
-                .sort((x,y)=>dayjs(y.date).valueOf()-dayjs(x.date).valueOf())
+                .sort((x,y)=>dayjs(y.createdAt).valueOf()-dayjs(x.createdAt).valueOf())
             if(newList.length===0){return []}
-            result.push({title:dayjs(newList[0].date).format('YYYY-MM-DD'),items:[newList[0]],total:newList[0].amount})
+            result.push({title:dayjs(newList[0].createdAt).format('YYYY-MM-DD'),items:[newList[0]],total:newList[0].amount})
             for(let i=1;i<newList.length;i++){
                 const current=newList[i]
                 const last=result[result.length-1]
-                if(dayjs(current.date).isSame(dayjs(last.title),'day')){
+                if(dayjs(current.createdAt).isSame(dayjs(last.title),'day')){
                     last.items.push(current)
                     last.total+=current.amount
                 }else{
-                    result.push({title:dayjs(current.date).format('YYYY-MM-DD'),items:[current],total:current.amount})
+                    result.push({title:dayjs(current.createdAt).format('YYYY-MM-DD'),items:[current],total:current.amount})
                 }
             }
             return result
@@ -79,7 +79,7 @@
             }else if(day.isSame(now.subtract(2,'day'),'day')){
                 return '前天'
             }else if(day.isSame(now,'year')) {
-                return day.format('M月M日')
+                return day.format('M月D日')
             }else {
                 return day.format('YYYY年M月D日')
             }

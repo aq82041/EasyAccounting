@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-      ? '/EasyAccounting-website/'
+      ? '/accounting-website/'
       : '/',
   lintOnSave: false,
   chainWebpack: config =>{

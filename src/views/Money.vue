@@ -1,6 +1,10 @@
 <template>
     <Layout class-prefix="layout">
         <NumPad @update:value="onUpdateAmount" @submit="saveRecord"/>
+        <div class="createdAt">
+            <FormItem type="date" :value.sync="record.createdAt" field-name="日期：" placeholder="点我选择日期~"/>
+        </div>
+
         <div class="notes">
             <FormItem :value.sync="record.notes" field-name="备注：" placeholder="点我写备注~"/>
         </div>
@@ -30,7 +34,8 @@
             tags:[],
             notes:'',
             type:'-',
-            amount:0
+            amount:0,
+            createdAt:new Date().toISOString()
         }
         typeList=typeList
         created(){

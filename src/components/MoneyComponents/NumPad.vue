@@ -69,11 +69,12 @@
         > .output {
             font-size: 36px;
             font-family: Consolas, monospace;
-            padding: 8px 16px;
+            padding: 0 16px;
             text-align: right;
             color: #F9B3CB;
             @extend %innerShadow;
-            height: 66px;
+            height: 54px;
+            line-height:54px;
         }
 
         > .buttons {

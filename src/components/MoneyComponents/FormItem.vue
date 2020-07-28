@@ -2,7 +2,10 @@
     <div>
         <label class="notes">
             <span class="name">{{fieldName}}</span>
-            <input type="text" :placeholder="placeholder"
+            <input v-if="type==='date'" type="date" :placeholder="placeholder"
+                   :value="x(value)" @change="onValueChanged($event.target.value)" >
+
+            <input v-else type="text" :placeholder="placeholder"
             :value="value" @change="onValueChanged($event.target.value)" >
         </label>
     </div>
@@ -10,6 +13,7 @@
 
 <script lang="ts">
     import Vue from 'vue';
+    import dayjs from 'dayjs'
     import {Component, Prop} from 'vue-property-decorator';
 
     @Component
@@ -17,9 +21,14 @@
         @Prop() fieldName: string | undefined
         @Prop() placeholder: string | undefined
         @Prop({default:''}) value!: string
+        @Prop() type?: string
 
         onValueChanged(newValue: string){
+            console.log(newValue)
             this.$emit("update:value",newValue)
+        }
+        x(isoString: string){
+            return dayjs(isoString).format('YYYY-MM-DD')
         }
 
     }
@@ -36,7 +45,7 @@
             padding-right:14px;
         }
         > input{
-            height:48px;
+            height:42px;
             flex-grow:1;
             background:transparent;
             border:none;

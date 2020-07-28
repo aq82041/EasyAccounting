@@ -4,7 +4,6 @@
   </div>
 </template>
 
-
 <style lang="scss">
   @import "~@/assets/style/reset.scss";
   @import "~@/assets/style/helper.scss";
@@ -19,7 +18,7 @@
 
  }
   #app{
-    max-width:500px;
+    max-width:375px;
     margin:0 auto;
   }
 
