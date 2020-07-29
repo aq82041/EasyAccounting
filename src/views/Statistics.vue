@@ -4,6 +4,9 @@
            <div class="my-text">轻松记账</div>
             <Tabs :data-source="typeList" :value.sync="type" class-prefix="type"/>
        </div>
+
+       <Chart :options="x" />
+
        <ul v-if="resultList.length>0">
            <li v-for="(value,index) in resultList" :key="index">
                <h3 class="title">{{beautify(value.title)}}  <span>￥{{value.total}}</span></h3>
@@ -31,14 +34,74 @@
     import typeList from '@/constant/typeList';
     import dayjs from 'dayjs';
     import clone from '@/lib/clone';
+    import Chart from '@/components/Chart.vue'
 
     @Component({
-        components: {Tabs},
+        components: {Tabs ,Chart},
     })
     export default class Statistics extends Vue {
 
         type = '-'
         typeList = typeList
+
+        get x(){
+            const data = []
+
+            for (let i = 0; i <= 360; i++) {
+                const t = i / 180 * Math.PI
+                const r = Math.sin(2 * t) * Math.cos(2 * t)
+                data.push([r, i])
+            }
+
+            return {
+
+                xAxis: {
+                    type: 'category',
+                    data: ['1', '2', '3', '4', '5', '6', '7',
+                    '8','9','10','11','12','13','14','15','16','17',
+                    '18','19','20','21','22','23','24','25','26',
+                    '27','28','29','30'],
+                    axisTick:{
+                        alignWithLabel:true
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:'#666'
+                        }
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    show:false
+                },
+                tooltip:{
+                    show:true,
+                    triggerOn:'click',
+                    formatter: '{c}',
+                    position:'top'
+                },
+                grid: {
+                    left: 0,
+                    top: 0,
+                    right: 0,
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320,
+                        820, 932, 901, 934, 1290, 1330, 1320,
+                        820, 932, 901, 934, 1290, 1330, 1320,
+                        820, 932, 901, 934, 1290, 1330, 1320,
+                        1330, 1320],
+
+                    type: 'line',
+                    symbolSize:10,
+                    itemStyle:{
+                        color:'#666'
+                    },
+                    symbol:'circle'
+                }]
+
+            }
+        }
 
         get recordList() {
             return (this.$store.state as myState).recordList
@@ -89,7 +152,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     .title{
         padding:4px 16px;
         display: flex;
