@@ -5,7 +5,7 @@
             <Tabs :data-source="typeList" :value.sync="type" class-prefix="type"/>
        </div>
 
-       <Chart :options="x" />
+       <Chart :options="chartOptions" />
 
        <ul v-if="resultList.length>0">
            <li v-for="(value,index) in resultList" :key="index">
@@ -45,14 +45,14 @@
         type = '-'
         typeList = typeList
 
-        get x(){
+        get chartOptions(){
             const today=dayjs()
             let array=[],date
             for(let i=0;i<=29;i++){
                 date=today.subtract(i,'day').format('YYYY-MM-DD')
-                const item=_.find(this.recordList,{createdAt:date})
+                const item=_.find(this.resultList,{title:date})
                 array.push({date:today.subtract(i,'day').format('M-D')
-                    ,value:item? item.amount:0})
+                    ,value:item? item.total:0})
             }
             array=array.reverse()
             return {
@@ -82,6 +82,7 @@
                     left: 0,
                     top: 40,
                     right: 0,
+                    bottom:40
                 },
                 series: [{
                     data: array.map(obj=>obj.value),
