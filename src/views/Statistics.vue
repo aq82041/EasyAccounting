@@ -35,6 +35,7 @@
     import dayjs from 'dayjs';
     import clone from '@/lib/clone';
     import Chart from '@/components/Chart.vue'
+    import _ from 'lodash'
 
     @Component({
         components: {Tabs ,Chart},
@@ -45,22 +46,19 @@
         typeList = typeList
 
         get x(){
-            const data = []
-
-            for (let i = 0; i <= 360; i++) {
-                const t = i / 180 * Math.PI
-                const r = Math.sin(2 * t) * Math.cos(2 * t)
-                data.push([r, i])
+            const today=dayjs()
+            let array=[],date
+            for(let i=0;i<=29;i++){
+                date=today.subtract(i,'day').format('YYYY-MM-DD')
+                const item=_.find(this.recordList,{createdAt:date})
+                array.push({date:today.subtract(i,'day').format('M-D')
+                    ,value:item? item.amount:0})
             }
-
+            array=array.reverse()
             return {
-
                 xAxis: {
                     type: 'category',
-                    data: ['1', '2', '3', '4', '5', '6', '7',
-                    '8','9','10','11','12','13','14','15','16','17',
-                    '18','19','20','21','22','23','24','25','26',
-                    '27','28','29','30'],
+                    data: array.map(obj=>obj.date),
                     axisTick:{
                         alignWithLabel:true
                     },
@@ -82,15 +80,11 @@
                 },
                 grid: {
                     left: 0,
-                    top: 0,
+                    top: 40,
                     right: 0,
                 },
                 series: [{
-                    data: [820, 932, 901, 934, 1290, 1330, 1320,
-                        820, 932, 901, 934, 1290, 1330, 1320,
-                        820, 932, 901, 934, 1290, 1330, 1320,
-                        820, 932, 901, 934, 1290, 1330, 1320,
-                        1330, 1320],
+                    data: array.map(obj=>obj.value),
 
                     type: 'line',
                     symbolSize:10,

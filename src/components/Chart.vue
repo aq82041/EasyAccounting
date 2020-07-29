@@ -16,7 +16,8 @@
         @Prop() options?: EChartOption
 
         mounted(){
-            (this.$refs.chart as HTMLDivElement).scrollLeft=9999
+            const div=this.$refs.chart as HTMLDivElement
+            div.scrollLeft=div.scrollWidth
             if(this.options===undefined){
                 return console.error('options为空')
             }
