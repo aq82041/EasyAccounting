@@ -27,7 +27,12 @@ const store= new Vuex.Store({
       store.commit('saveRecords')
     },
     fetchTags(state){
-      state.tagList=JSON.parse(localStorage.getItem("tagList") || '[]')
+      state.tagList=JSON.parse(localStorage.getItem("tagList") ||
+          JSON.stringify([{id:createId().toString(),name:'衣服'},
+        {id:createId().toString(),name:'交通'},
+        {id:createId().toString(),name:'餐饮'},
+        {id:createId().toString(),name:'住房'},])
+      )
     },
     saveTags(state){
       localStorage.setItem("tagList",JSON.stringify(state.tagList))

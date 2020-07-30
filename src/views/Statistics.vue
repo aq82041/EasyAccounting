@@ -170,7 +170,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding:200px 0;
+        padding:120px 0;
         > .icon{
             width:80px;
             height:80px;
