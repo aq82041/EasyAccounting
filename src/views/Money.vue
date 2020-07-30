@@ -44,7 +44,6 @@
         onUpdateTags(tags: string[]){
             this.record.tags=tags
         }
-
         onUpdateAmount(amount: string){
             this.record.amount=parseFloat(amount)
         }

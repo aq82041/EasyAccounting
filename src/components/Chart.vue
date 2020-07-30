@@ -30,7 +30,6 @@
         onOptionsChange(newValue: EChartOption){
             this.myChart!.setOption(newValue)
         }
-
         }
 </script>
 
