@@ -93,13 +93,14 @@
                 }
                 &.zero {
                     width: 50%;
-                    background: #766c87;
+                    background: #655a78;
                 }
                 &.one{background:#a9a3b3}
                 &.two,&.four{background: #9890a4}
                 &.three,&.five,&.seven{background:#877e95}
                 &.six,&.eight,&.remove{background:#766c87}
-                &.nine,&.dian,&.clear{background: #655a78}
+                &.nine,&.clear{background: #655a78}
+                &.dian{background:#5d5071}
             }
         }
     }
