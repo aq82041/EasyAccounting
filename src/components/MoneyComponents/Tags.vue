@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-    import {Component} from 'vue-property-decorator';
+    import {Component, Prop} from 'vue-property-decorator';
     import {TagHelper} from '@/mixins/TagHelper';
     import {mixins} from 'vue-class-component';
 
@@ -23,11 +23,13 @@
             }
         }
     })
+
    export default class Tags extends mixins(TagHelper){
+        @Prop() selectedTags!: string[]
         beforeCreate(){
             this.$store.commit('fetchTags')
         }
-        selectedTags: string[]=[]
+        //selectedTags: string[]=[]
         toggle(tag: string){
            const index=this.selectedTags.indexOf(tag)
            if(index>=0){
@@ -35,7 +37,7 @@
            }else{
                this.selectedTags.push(tag)
            }
-           this.$emit("update:value",this.selectedTags)
+           this.$emit("update:selectedTags",this.selectedTags)
         }
 
    }

@@ -9,7 +9,7 @@
             <FormItem :value.sync="record.notes" field-name="备注：" placeholder="点我写备注~"/>
         </div>
 
-        <Tags @update:value="onUpdateTags"/>
+        <Tags :selected-tags.sync="record.tags"/>
         <Tabs :data-source="typeList" :value.sync="record.type"/>
     </Layout>
 </template>
@@ -41,9 +41,6 @@
         created(){
             this.$store.commit('fetchRecords')
         }
-        onUpdateTags(tags: string[]){
-            this.record.tags=tags
-        }
         onUpdateAmount(amount: string){
             this.record.amount=parseFloat(amount)
         }
@@ -56,6 +53,7 @@
             this.$store.commit('createRecord',this.record)
             window.alert('保存成功')
             this.record.notes=''
+            this.record.tags=[]
         }
     }
 </script>
