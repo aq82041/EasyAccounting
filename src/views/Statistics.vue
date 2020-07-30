@@ -1,12 +1,7 @@
 <template>
    <Layout>
-       <div class="myTitle">
-           <div class="my-text">轻松记账</div>
-            <Tabs :data-source="typeList" :value.sync="type" class-prefix="type"/>
-       </div>
-
+       <Tabs :data-source="typeList" :value.sync="type" class-prefix="type"/>
        <Chart :options="chartOptions" />
-
        <ul v-if="resultList.length>0">
            <li v-for="(value,index) in resultList" :key="index">
                <h3 class="title">{{beautify(value.title)}}  <span>￥{{value.total}}</span></h3>
@@ -18,7 +13,6 @@
                    </li>
                </ul>
            </li>
-
        </ul>
        <div class="else" v-else>
            <Icon name="goCount"/>
@@ -160,8 +154,8 @@
         display:flex;
         justify-content: space-between;
         align-content: center;
-        line-height:36px;
-        padding:8px 16px;
+        line-height:32px;
+        padding:4px 16px;
         > .amount{
 
         }
@@ -180,22 +174,13 @@
         > .icon{
             width:80px;
             height:80px;
-            color:#F9B3CB;
+            color:rgb(76, 62, 98);
         }
         > .text{
             color:#999;
             font-size:14px;
         }
     }
-    .myTitle {
-        background: #F9B3CB;
-        .my-text {
-            font-family: "Droid Sans Mono Dotted", serif;
-            font-size: 22px;
-            text-align: center;
-            padding: 4px 0;
-            color:white;
-        }
-    }
+
 
 </style>

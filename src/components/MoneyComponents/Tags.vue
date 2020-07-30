@@ -67,7 +67,7 @@
                 justify-content: center;
                 margin-top:6px;
                 &.selected{
-                    background:#F9B3CB;
+                    background:rgb(76, 62, 98);
                     color:white;
                 }
             }

@@ -25,20 +25,27 @@
 
 <style lang="scss" scoped>
     .tabs{
-        background: #F9B3CB;
+        background: rgb(76, 62, 98);
         color:white;
-        padding:16px 80px;
-        font-size:20px;
+        padding:24px 80px 16px 80px;
+        font-size:16px;
         display: flex;
         > .tabs-item{
-                padding:0 10px;
+                padding:0 8px;
                 width:50%;
                 text-align: center;
-                border:2px solid white;
-                border-radius:18px;
+                border:1px solid white;
+                &:first-child{
+                    border-radius:6px 0 0 6px;
+                }
+                &:last-child{
+                    border-radius:0 6px 6px 0;
+                }
+
+
                 &.selected{
                     background:white;
-                    color:#F9B3CB;
+                    color:rgb(76, 62, 98);
                     &::after{
                         display:none;
                     }

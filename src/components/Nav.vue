@@ -2,7 +2,7 @@
     <nav>
         <router-link class="item" to="/statistics" active-class="selected">
             <Icon name="statistics"/>
-            明细
+            统计
         </router-link>
         <router-link class="item" to="/money" active-class="selected">
             <Icon name="money"/>
@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts">
-
     export default {
         name: 'Nav',
     };
@@ -36,6 +35,7 @@
             align-items: center;
             justify-content: center;
             padding:4px 0;
+            color:#999;
             > .icon{
                 width: 32px;
                 height: 32px;
@@ -44,6 +44,5 @@
         > .selected{
             color:$color-highlight;
         }
-
     }
 </style>

@@ -2,17 +2,17 @@
     <div class="num-pad">
         <div class="output">{{output}}</div>
         <div class="buttons">
-            <button @click="inputContent">1</button>
-            <button @click="inputContent">2</button>
-            <button @click="inputContent">3</button>
+            <button @click="inputContent" class="one">1</button>
+            <button @click="inputContent" class="two">2</button>
+            <button @click="inputContent" class="three">3</button>
             <button @click="remove" class="remove">删除</button>
-            <button @click="inputContent">4</button>
-            <button @click="inputContent">5</button>
-            <button @click="inputContent">6</button>
+            <button @click="inputContent" class="four">4</button>
+            <button @click="inputContent" class="five">5</button>
+            <button @click="inputContent" class="six">6</button>
             <button @click="clear" class="clear">清空</button>
-            <button @click="inputContent">7</button>
-            <button @click="inputContent">8</button>
-            <button @click="inputContent">9</button>
+            <button @click="inputContent" class="seven">7</button>
+            <button @click="inputContent" class="eight">8</button>
+            <button @click="inputContent" class="nine">9</button>
             <button  @click="ok" class="ok">OK</button>
             <button @click="inputContent" class="zero">0</button>
             <button @click="inputContent" class="dian">.</button>
@@ -71,7 +71,7 @@
             font-family: Consolas, monospace;
             padding: 0 16px;
             text-align: right;
-            color: #F9B3CB;
+            color: rgb(76, 62, 98);
             @extend %innerShadow;
             height: 54px;
             line-height:54px;
@@ -83,32 +83,23 @@
                 float: left;
                 width: 25%;
                 height: 58px;
-
                 border: none;
-                border-top: 1px solid black;
-                border-right: 1px solid black;
-                font-size: 20px;
-                background:white;
+                font-size: 18px;
+                color:white;
                 &.ok {
                     height: 116px;
                     float: right;
-                    border-right: none;
-                    border-bottom: 1px solid black;
+                    background: #4c3e62;
                 }
-
                 &.zero {
                     width: 50%;
-                    border-bottom: 1px solid black;
+                    background: #766c87;
                 }
-
-                &.dian {
-
-                    border-bottom: 1px solid black;
-                }
-
-                &.remove, &.clear {
-                    border-right: none;
-                }
+                &.one{background:#a9a3b3}
+                &.two,&.four{background: #9890a4}
+                &.three,&.five,&.seven{background:#877e95}
+                &.six,&.eight,&.remove{background:#766c87}
+                &.nine,&.dian,&.clear{background: #655a78}
             }
         }
     }
